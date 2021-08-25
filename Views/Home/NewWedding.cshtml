@@ -1,0 +1,19 @@
+<Partial name = "_NavBarPartial"/>
+<h2>My Weddings</h2>
+<table class = "table table-striped">
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guest</th>
+        <th>Action</th>
+    </tr>
+    @foreach(Wedding w in ViewBag.Users.AllWeddings)
+    {
+        <tr>
+            <td>@w.WedderOne & @w.WedderTwo</td>
+            <td>@w.Date</td>
+            <td>@w.GuestAttending.Count()</td>
+            <td><a class="btn btn-danger" href="/delete/@w.WeddingId" role="button">Delete</a></td>
+        </tr>
+    }
+</table>

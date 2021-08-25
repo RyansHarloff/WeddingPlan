@@ -1,0 +1,28 @@
+<Partial name = "_NavBarPartial"/>
+<h1>Welcome to the Wedding Planner!</h1>
+<table class = "table table-striped">
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guest</th>
+        <th>Action</th>
+    </tr>
+    @foreach(Wedding w in ViewBag.OtherWeddings)
+    {
+        <tr>
+            <td><a href="/OneWedding/{WeddingId}">@w.WedderOne & @w.WedderTwo</a></td>
+            <td>@w.Date</td>
+            <td>@w.GuestAttending.Count()</td>
+            <td>
+            @{
+                if(w.GuestAttending.Any(a => a.UserId == ViewBag.Users.UserId))
+                {
+                    <a class="btn btn-primary" href="norsvp/@ViewBag.Users.UserId/@w.WeddingId" role="button">NoRsvp</a>
+                }else{
+                    <a class="btn btn-success" href="rsvp/@ViewBag.Users.UserId/@w.WeddingId" role="button">Rsvp</a>
+                }
+            }</td>
+        </tr>
+    }
+</table>
+

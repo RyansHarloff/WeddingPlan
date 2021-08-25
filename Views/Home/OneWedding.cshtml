@@ -1,0 +1,9 @@
+
+<Partial name = "_NavBarPartial"/>
+@foreach(Wedding r in ViewBag.OtherWeddings)
+    {
+        <h1>@r.WedderOne And @r.WedderTwo Wedding!</h1>
+        <h2>@r.Date</h2>
+        <h3>Guests:</h3>
+        <h2>@r.GuestAttending.Count()</h2>
+    }
